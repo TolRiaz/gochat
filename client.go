@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net"
 //	"strconv"
-	"time"
+//	"time"
 )
 
 func main() {
@@ -17,6 +17,7 @@ func main() {
 
 	defer client.Close()
 
+/*
 	go func(c net.Conn) {
 		data := make([]byte, 4096)
 
@@ -31,16 +32,18 @@ func main() {
 			time.Sleep(1 * time.Second)
 		}
 	}(client)
-
+*/
 
 	func(c net.Conn) {
 		var i string
+		var s string
 		for {
 			fmt.Printf("User: ")
 			fmt.Scanf("%s", &i)
-			s := "User: " + i
+			s = "User: " + i
 
 			c.Write([]byte(s))
+
 			if err != nil {
 				fmt.Println(err)
 				return
