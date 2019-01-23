@@ -15,7 +15,6 @@ func requestHandler(c net.Conn) {
 			return
 		}
 		fmt.Println(string(data[:n]))
-
 		c.Write(data[:n])
 		if err != nil {
 			fmt.Println(err)

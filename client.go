@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"net"
-	"strconv"
+//	"strconv"
 	"time"
 )
 
@@ -32,6 +32,23 @@ func main() {
 		}
 	}(client)
 
+
+	func(c net.Conn) {
+		var i string
+		for {
+			fmt.Printf("User: ")
+			fmt.Scanf("%s", &i)
+			s := "User: " + i
+
+			c.Write([]byte(s))
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+//			time.Sleep(1 * time.Second)
+		}
+	}(client)
+/*
 	go func(c net.Conn) {
 		i := 0
 		for {
@@ -46,5 +63,6 @@ func main() {
 			time.Sleep(1 * time.Second)
 		}
 	}(client)
+*/
 	fmt.Scanln()
 }
