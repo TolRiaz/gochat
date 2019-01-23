@@ -1,9 +1,18 @@
 package main
 
-import(
-	"server"
+import (
+	"fmt"
+	"net"
+	"os"
 )
 
 func main() {
-	server.Start()
+	tcpAddr, err := net.ResolveTCPAddr("tcp", "www.google.co.kr:ssh")
+	if err != nil {
+		fmt.Println("Error : ", err.Error())
+		os.Exit(1)
+	}
+	fmt.Println("IP ", tcpAddr.IP.String(),
+		"Port ", tcpAddr.Port)
+	os.Exit(0)
 }
