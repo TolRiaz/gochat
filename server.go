@@ -14,8 +14,10 @@ func requestHandler(c net.Conn) {
 			fmt.Println(err)
 			return
 		}
+
 		fmt.Println(string(data[:n]))
-		c.Write(data[:n])
+
+		_, err = c.Write(data[:n])
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -24,7 +26,7 @@ func requestHandler(c net.Conn) {
 }
 
 func main() {
-	ln, err := net.Listen("tcp", ":8000")
+	ln, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -42,3 +44,5 @@ func main() {
 		go requestHandler(conn)
 	}
 }
+
+
